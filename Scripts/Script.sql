@@ -1,5 +1,9 @@
 select id, passwd, name, age, gender, email from member;
 
+update member set 
+name ='도다리', age = 26, gender = '여자', email = 'test@co.kr' where id ='1';
+
+
 delete from member where id = 'chamdodari';
 
 desc member;

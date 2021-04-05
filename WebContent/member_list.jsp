@@ -32,12 +32,16 @@ ${list }
 <td>${member.age }</td>
 <td>${member.gender }</td>
 <td>${member.email }</td>
-<td><a href="member_update?id=${member.id }">수정 </a></td>
-<td><a href="Member_delete?id=${member.id }">삭제 </a></td>
+
+<td><a href="Member_get?id=${member.id }&name=${member.name}&age=${member.age}&gender=${member.gender}&email=${member.email}">수정 </a></td>
+<td><a href="member_delete?id=${member.id }">삭제 </a></td>
+
 </tr>
 
 </c:forEach>
 
 </table>
+	<h2><a href="joinForm.jsp">회원추가</a></h2>
+	<h2><a href="main.jsp">메인화면으로</a></h2>
 </body>
 </html>

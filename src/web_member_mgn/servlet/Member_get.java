@@ -1,7 +1,6 @@
 package web_member_mgn.servlet;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,27 +11,29 @@ import javax.servlet.http.HttpServletResponse;
 import web_member_mgn.dto.Member;
 import web_member_mgn.service.MemberService;
 
-@WebServlet("/Member_list")
-public class Member_list extends HttpServlet {
+
+@WebServlet("/Member_get")
+public class Member_get extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private MemberService service;
+	
        
-
-    public Member_list() {
+  
+    public Member_get() {
     	service = new MemberService();
+    	
     }
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		List<Member> list = service.showMembers();
-		list.stream().forEach(System.out::println);
-		request.setAttribute("list",list);
-		System.out.println("list --> " + list);
-		request.getRequestDispatcher("member_list.jsp").forward(request, response);
-	
-
+		String id = request.getParameter("id");
+		Member member = service.selectMemberById(new Member(id));
+		System.out.println(member);
+		request.setAttribute("member",member);
+		request.getRequestDispatcher("member_update.jsp").forward(request, response);
 	}
+
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}

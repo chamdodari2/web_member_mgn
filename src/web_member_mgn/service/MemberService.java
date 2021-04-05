@@ -17,7 +17,9 @@ public class MemberService {
 		
 		
 	}
-	
+	public Member selectMemberById(Member member) {
+		return dao.selectMemberById(member);
+	}
 	
 	public List<Member> showMembers(){
 		return dao.selectMemberByAll();
@@ -33,5 +35,9 @@ public class MemberService {
 	public int deleteMember(Member member) {
 		return dao.delMember(member);
 	}
-
+	public int updateMember(Member member) {
+		return dao.updateMember(member);
+	}
+	
+	
 }
