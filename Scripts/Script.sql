@@ -11,6 +11,14 @@ password('1111'),
 'test@test.co.kr'
 );
 
+insert into member values(
+'admin', 
+password('rootroot'), 
+'이종윤',
+41, 
+'여자', 
+'admin@test.co.kr'
+);
 CREATE TABLE member (
 	id  varchar(15)    NOT null,
 	passwd    char(41),
@@ -24,3 +32,7 @@ CREATE TABLE member (
 select id, name, age, gender,email 
 from member 
 where id =1 and passwd = password('1111');
+
+
+insert into member values
+(1, password('1111'), '김상건',40, '여자', 'test@test.co.kr');

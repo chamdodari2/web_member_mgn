@@ -1,7 +1,5 @@
 package web_member_mgn.service;
 
-import java.sql.Connection;
-
 import web_member_mgn.dao.impl.MemberDaoImpl;
 import web_member_mgn.ds.JndiDS;
 import web_member_mgn.dto.Member;
@@ -21,5 +19,9 @@ public class MemberService {
 	public Member loginMember(Member member) {
 		return dao.selectMemberById(member);
 	}
+	public void joinMember(Member member) {
+		dao.insertMember(member);
+	}
+	
 
 }
