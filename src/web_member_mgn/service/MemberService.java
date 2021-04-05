@@ -1,5 +1,7 @@
 package web_member_mgn.service;
 
+import java.util.List;
+
 import web_member_mgn.dao.impl.MemberDaoImpl;
 import web_member_mgn.ds.JndiDS;
 import web_member_mgn.dto.Member;
@@ -16,12 +18,20 @@ public class MemberService {
 		
 	}
 	
+	
+	public List<Member> showMembers(){
+		return dao.selectMemberByAll();
+	}
+	
+	
 	public Member loginMember(Member member) {
 		return dao.selectMemberById(member);
 	}
-	public void joinMember(Member member) {
-		dao.insertMember(member);
+	public int joinMember(Member member) {
+		return dao.insertMember(member);
 	}
-	
+	public int deleteMember(Member member) {
+		return dao.delMember(member);
+	}
 
 }

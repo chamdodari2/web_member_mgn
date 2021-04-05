@@ -26,13 +26,16 @@ public class JoinProcess extends HttpServlet {
 	String email=request.getParameter("email");
 	System.out.printf("id : %s, pass : %s, name : %s, age : %d, gender : %s, email : %s",id,pass,name,age,gender,email);
 		//Member joinMember = getMember();
-	//int res = service.
+	Member member = new Member(id, pass, name, age, gender, email);//1
+	int res = service.joinMember(member);//2
+	System.out.println("res :  " + res);
+	if(res == 1) {  //res가 1이뜨면
+		request.getRequestDispatcher("loginForm.jsp").forward(request, response);	
+	}else {
+		request.getRequestDispatcher("joinForm.jsp").forward(request, response);
+	}
 	
-	Member member = new Member(id, pass, name, age, gender, email);
-	System.out.println("member : "+ member);
-	service.joinMember(member);
-	
-	response.sendRedirect("joinForm.jsp");
+		
 	
 	}
 

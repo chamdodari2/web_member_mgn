@@ -1,4 +1,6 @@
-select  * from member;
+select id, passwd, name, age, gender, email from member;
+
+delete from member where id = 'chamdodari';
 
 desc member;
 
@@ -35,4 +37,6 @@ where id =1 and passwd = password('1111');
 
 
 insert into member values
-(1, password('1111'), '김상건',40, '여자', 'test@test.co.kr');
+(3, password('1111'), '김상건',40, '여자', 'test@test.co.kr');
+
+select id, passwd, name, age, gender, email from member where id !='admin';

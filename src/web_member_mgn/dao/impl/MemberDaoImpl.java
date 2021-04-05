@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.sun.corba.se.spi.ior.iiop.RequestPartitioningComponent;
 
@@ -62,16 +64,50 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Override
 	public int insertMember(Member member) {
-		String sql = "insert into member values " 
-				+ 	 "(?, password(?), ? , ? , ?, ?)";
+		String sql = "insert into member values" 
+				+ 	  "(?, password(?), ? , ? , ? , ?)";
 		try( PreparedStatement pstmt = con.prepareStatement(sql)){
 			//id,passwd,name,age,gender,email
 			pstmt.setString(1, member.getId());
 			pstmt.setString(2, member.getPasswd());
-			pstmt.setInt(3, member.getAge());
-			pstmt.setString(4, member.getGender());
-			pstmt.setString(5, member.getEmail());
-	
+			pstmt.setString(3, member.getName());			
+			pstmt.setInt(4, member.getAge());
+			pstmt.setString(5, member.getGender());
+			pstmt.setString(6, member.getEmail());	
+			return pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+			
+		}
+		return 0;
+	}
+
+	@Override
+	public List<Member> selectMemberByAll() {
+		String sql ="select id, passwd, name, age, gender, email from member where id !='admin' ";
+		try(PreparedStatement pstmt = con.prepareStatement(sql);
+				ResultSet rs = pstmt.executeQuery()){
+			if(rs.next()) {}
+			List<Member> list = new ArrayList<>();
+			do {
+				list.add(getMember(rs));
+			}while(rs.next());
+			System.out.println(list.size());
+			return list;
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+				
+		
+		return null;
+	}
+
+	@Override
+	public int delMember(Member member) {
+		String sql = "delete from member where id = ?";
+		try(PreparedStatement pstmt = con.prepareStatement(sql)){
+			pstmt.setString(1,member.getId());
 			return pstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();

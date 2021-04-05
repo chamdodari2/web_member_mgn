@@ -2,7 +2,7 @@ package web_member_mgn.dto;
 
 public class Member {
 	private String id;
-	private String passwd;
+	private String passwd; 
 	private String name;
 	private int age;
 	private String gender;
@@ -11,6 +11,12 @@ public class Member {
 	
 	public Member() {
 	
+	}
+
+
+	public Member(String id) {
+		super();
+		this.id = id;
 	}
 
 
@@ -116,7 +122,7 @@ public class Member {
 				+ ", email=" + email + "]";
 	}
 
-
+	
 
 	
 
