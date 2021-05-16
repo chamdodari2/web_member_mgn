@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="css/member_list_style.css">
 </head>
 <body>
-${list }
+
 
 <table border="1">
 <h2>회원 목록</h2>

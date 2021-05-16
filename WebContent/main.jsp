@@ -20,8 +20,8 @@
 <body>
 <h3>${id }로 로그인 하셨습니다.</h3>
 	<c:if test="${id eq 'admin' }">
-	<a href="Member_list"> 관리자모드 접속(회원 목록 보기)</a>
+	<h3><a href="Member_list"> 관리자모드 접속(회원 목록 보기)</a></h3>
 	</c:if>
-	<a href="loginForm.jsp"> 로그아웃</a>
+	<h3><a href="loginForm.jsp"> 로그아웃</a></h3>
 </body>
 </html>
